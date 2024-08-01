@@ -1,0 +1,2170 @@
+{
+  "Resources": {
+    "PostCommentsDataResolverFnPostCommentsDataResolverFnAppSyncFunction87EBA9A8": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackCommentNestedStackCommentNestedStackResource199283FBOutputstransformerrootstackCommentCommentDataSourceA0E54655Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostCommentsDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.comments.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.comments.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostcommentsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "comments",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostCommentsDataResolverFnPostCommentsDataResolverFnAppSyncFunction87EBA9A8",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Post\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"comments\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackCommentNestedStackCommentNestedStackResource199283FBOutputstransformerrootstackCommentCommentTable5427FDE2Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Post"
+      }
+    },
+    "PostLikesDataResolverFnPostLikesDataResolverFnAppSyncFunctionF118BB6C": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesDataSource845BFDCCName"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostLikesDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.likes.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.likes.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostlikesResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "likes",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostLikesDataResolverFnPostLikesDataResolverFnAppSyncFunctionF118BB6C",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Post\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"likes\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesTableEAFB06F0Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Post"
+      }
+    },
+    "PostEnquiryDataResolverFnPostEnquiryDataResolverFnAppSyncFunctionA2E9A714": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackEnquiryNestedStackEnquiryNestedStackResource5078A50DOutputstransformerrootstackEnquiryEnquiryDataSourceBFB9B3E1Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostEnquiryDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.enquiry.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.enquiry.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostenquiryResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "enquiry",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostEnquiryDataResolverFnPostEnquiryDataResolverFnAppSyncFunctionA2E9A714",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Post\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"enquiry\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackEnquiryNestedStackEnquiryNestedStackResource5078A50DOutputstransformerrootstackEnquiryEnquiryTable59D92D7FRef"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Post"
+      }
+    },
+    "PostSavedPostDataResolverFnPostSavedPostDataResolverFnAppSyncFunction346AC9FF": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackSavedPostNestedStackSavedPostNestedStackResourceB6DFA658OutputstransformerrootstackSavedPostSavedPostDataSourceC194B457Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostSavedPostDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.savedPost.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.savedPost.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostsavedPostResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "savedPost",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostSavedPostDataResolverFnPostSavedPostDataResolverFnAppSyncFunction346AC9FF",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Post\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"savedPost\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackSavedPostNestedStackSavedPostNestedStackResourceB6DFA658OutputstransformerrootstackSavedPostSavedPostTable60F4DC15Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Post"
+      }
+    },
+    "movedDraftPostscommentsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "comments",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostCommentsDataResolverFnPostCommentsDataResolverFnAppSyncFunction87EBA9A8",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"movedDraftPosts\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"comments\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackCommentNestedStackCommentNestedStackResource199283FBOutputstransformerrootstackCommentCommentTable5427FDE2Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "movedDraftPosts"
+      }
+    },
+    "MovedDraftPostsLikesDataResolverFnMovedDraftPostsLikesDataResolverFnAppSyncFunctionC9FE2CA3": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesDataSource845BFDCCName"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "MovedDraftPostsLikesDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/movedDraftPosts.likes.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/movedDraftPosts.likes.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "movedDraftPostslikesResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "likes",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "MovedDraftPostsLikesDataResolverFnMovedDraftPostsLikesDataResolverFnAppSyncFunctionC9FE2CA3",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"movedDraftPosts\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"likes\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesTableEAFB06F0Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "movedDraftPosts"
+      }
+    },
+    "UserLikedPostsDataResolverFnUserLikedPostsDataResolverFnAppSyncFunction0F353BB5": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesDataSource845BFDCCName"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "UserLikedPostsDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/User.likedPosts.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/User.likedPosts.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "UserlikedPostsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "likedPosts",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "UserLikedPostsDataResolverFnUserLikedPostsDataResolverFnAppSyncFunction0F353BB5",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"User\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"likedPosts\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesTableEAFB06F0Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "User"
+      }
+    },
+    "UserSavedPostsDataResolverFnUserSavedPostsDataResolverFnAppSyncFunction105E17C9": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostDataSource6998E105Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "UserSavedPostsDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/User.savedPosts.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/User.savedPosts.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "UsersavedPostsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "savedPosts",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "UserSavedPostsDataResolverFnUserSavedPostsDataResolverFnAppSyncFunction105E17C9",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"User\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"savedPosts\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostTable34CAE87BRef"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "User"
+      }
+    },
+    "UserCommentedPostsDataResolverFnUserCommentedPostsDataResolverFnAppSyncFunction03D9362F": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackCommentNestedStackCommentNestedStackResource199283FBOutputstransformerrootstackCommentCommentDataSourceA0E54655Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "UserCommentedPostsDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/User.commentedPosts.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/User.commentedPosts.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "UsercommentedPostsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "commentedPosts",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "UserCommentedPostsDataResolverFnUserCommentedPostsDataResolverFnAppSyncFunction03D9362F",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"User\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"commentedPosts\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackCommentNestedStackCommentNestedStackResource199283FBOutputstransformerrootstackCommentCommentTable5427FDE2Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "User"
+      }
+    },
+    "PostCategoryDataResolverFnPostCategoryDataResolverFnAppSyncFunctionD76B0292": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryDataSource9AF16D52Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostCategoryDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.category.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.category.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostcategoryResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "category",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostCategoryDataResolverFnPostCategoryDataResolverFnAppSyncFunctionD76B0292",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Post\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"category\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryTable44E1EFF7Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Post"
+      }
+    },
+    "PostPostedByDataResolverFnPostPostedByDataResolverFnAppSyncFunctionA6DA3649": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostPostedByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.postedBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Post.postedBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostpostedByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "postedBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostPostedByDataResolverFnPostPostedByDataResolverFnAppSyncFunctionA6DA3649",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Post\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"postedBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Post"
+      }
+    },
+    "MovedDraftPostsCategoryDataResolverFnMovedDraftPostsCategoryDataResolverFnAppSyncFunction725F14A1": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryDataSource9AF16D52Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "MovedDraftPostsCategoryDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/movedDraftPosts.category.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/movedDraftPosts.category.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "movedDraftPostscategoryResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "category",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "MovedDraftPostsCategoryDataResolverFnMovedDraftPostsCategoryDataResolverFnAppSyncFunction725F14A1",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"movedDraftPosts\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"category\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryTable44E1EFF7Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "movedDraftPosts"
+      }
+    },
+    "MovedDraftPostsPostedByDataResolverFnMovedDraftPostsPostedByDataResolverFnAppSyncFunction4CF8B778": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "MovedDraftPostsPostedByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/movedDraftPosts.postedBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/movedDraftPosts.postedBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "movedDraftPostspostedByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "postedBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "MovedDraftPostsPostedByDataResolverFnMovedDraftPostsPostedByDataResolverFnAppSyncFunction4CF8B778",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"movedDraftPosts\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"postedBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "movedDraftPosts"
+      }
+    },
+    "CommentPostDataResolverFnCommentPostDataResolverFnAppSyncFunction20ABACCE": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostDataSource6998E105Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "CommentPostDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Comment.post.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Comment.post.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "CommentpostResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "post",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "CommentPostDataResolverFnCommentPostDataResolverFnAppSyncFunction20ABACCE",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Comment\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"post\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostTable34CAE87BRef"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Comment"
+      }
+    },
+    "CommentCommentedByDataResolverFnCommentCommentedByDataResolverFnAppSyncFunction827B2506": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "CommentCommentedByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Comment.commentedBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Comment.commentedBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "CommentcommentedByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "commentedBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "CommentCommentedByDataResolverFnCommentCommentedByDataResolverFnAppSyncFunction827B2506",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Comment\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"commentedBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Comment"
+      }
+    },
+    "LikesPostedByDataResolverFnLikesPostedByDataResolverFnAppSyncFunction8443A121": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "LikesPostedByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Likes.postedBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Likes.postedBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "LikespostedByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "postedBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "LikesPostedByDataResolverFnLikesPostedByDataResolverFnAppSyncFunction8443A121",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Likes\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"postedBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Likes"
+      }
+    },
+    "LikesLikedByDataResolverFnLikesLikedByDataResolverFnAppSyncFunction918320DC": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "LikesLikedByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Likes.LikedBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Likes.LikedBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "LikesLikedByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "LikedBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "LikesLikedByDataResolverFnLikesLikedByDataResolverFnAppSyncFunction918320DC",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Likes\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"LikedBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Likes"
+      }
+    },
+    "EnquiryEnquiredByIdDataResolverFnEnquiryEnquiredByIdDataResolverFnAppSyncFunctionA4A8473E": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "EnquiryEnquiredByIdDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Enquiry.enquiredById.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Enquiry.enquiredById.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "EnquiryenquiredByIdResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "enquiredById",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "EnquiryEnquiredByIdDataResolverFnEnquiryEnquiredByIdDataResolverFnAppSyncFunctionA4A8473E",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Enquiry\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"enquiredById\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Enquiry"
+      }
+    },
+    "SavedPostSavedByDataResolverFnSavedPostSavedByDataResolverFnAppSyncFunctionD7722D80": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "SavedPostSavedByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/SavedPost.savedBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/SavedPost.savedBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "SavedPostsavedByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "savedBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "SavedPostSavedByDataResolverFnSavedPostSavedByDataResolverFnAppSyncFunctionD7722D80",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"SavedPost\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"savedBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "SavedPost"
+      }
+    },
+    "FollowFollowedByDataResolverFnFollowFollowedByDataResolverFnAppSyncFunctionFB96341B": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "FollowFollowedByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Follow.followedBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Follow.followedBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "FollowfollowedByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "followedBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "FollowFollowedByDataResolverFnFollowFollowedByDataResolverFnAppSyncFunctionFB96341B",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Follow\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"followedBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Follow"
+      }
+    },
+    "FollowFollowingDataResolverFnFollowFollowingDataResolverFnAppSyncFunctionC6F4F7E4": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "FollowFollowingDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Follow.following.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Follow.following.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "FollowfollowingResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "following",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "FollowFollowingDataResolverFnFollowFollowingDataResolverFnAppSyncFunctionC6F4F7E4",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Follow\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"following\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Follow"
+      }
+    },
+    "PostDraftsCategoryDataResolverFnPostDraftsCategoryDataResolverFnAppSyncFunctionE6AFB6EA": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryDataSource9AF16D52Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostDraftsCategoryDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/PostDrafts.category.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/PostDrafts.category.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostDraftscategoryResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "category",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostDraftsCategoryDataResolverFnPostDraftsCategoryDataResolverFnAppSyncFunctionE6AFB6EA",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"PostDrafts\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"category\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryTable44E1EFF7Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "PostDrafts"
+      }
+    },
+    "PostDraftsCreateByDataResolverFnPostDraftsCreateByDataResolverFnAppSyncFunction47758E5F": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "PostDraftsCreateByDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/PostDrafts.createBy.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/PostDrafts.createBy.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "PostDraftscreateByResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "createBy",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "PostDraftsCreateByDataResolverFnPostDraftsCreateByDataResolverFnAppSyncFunction47758E5F",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"PostDrafts\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createBy\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "PostDrafts"
+      }
+    },
+    "LikesPostDataResolverFnLikesPostDataResolverFnAppSyncFunction251D7571": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostDataSource6998E105Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "LikesPostDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Likes.post.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Likes.post.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "LikespostResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "post",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "LikesPostDataResolverFnLikesPostDataResolverFnAppSyncFunction251D7571",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Likes\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"post\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostTable34CAE87BRef"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Likes"
+      }
+    },
+    "EnquiryPostIdDataResolverFnEnquiryPostIdDataResolverFnAppSyncFunctionE54D84E1": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostDataSource6998E105Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "EnquiryPostIdDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Enquiry.postId.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Enquiry.postId.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "EnquirypostIdResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "postId",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "EnquiryPostIdDataResolverFnEnquiryPostIdDataResolverFnAppSyncFunctionE54D84E1",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"Enquiry\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"postId\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostTable34CAE87BRef"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "Enquiry"
+      }
+    },
+    "SavedPostPostDataResolverFnSavedPostPostDataResolverFnAppSyncFunction6544CCCA": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostDataSource6998E105Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "SavedPostPostDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/SavedPost.post.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/SavedPost.post.res.vtl"
+            ]
+          ]
+        }
+      }
+    },
+    "SavedPostpostResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "post",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "SavedPostPostDataResolverFnSavedPostPostDataResolverFnAppSyncFunction6544CCCA",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"SavedPost\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"post\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostTable34CAE87BRef"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+        "TypeName": "SavedPost"
+      }
+    }
+  },
+  "Parameters": {
+    "referencetotransformerrootstackGraphQLAPI20497F53ApiId": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackCommentNestedStackCommentNestedStackResource199283FBOutputstransformerrootstackCommentCommentDataSourceA0E54655Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackS3DeploymentBucket7592718ARef": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackCommentNestedStackCommentNestedStackResource199283FBOutputstransformerrootstackCommentCommentTable5427FDE2Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesDataSource845BFDCCName": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackLikesNestedStackLikesNestedStackResourceB74A0844OutputstransformerrootstackLikesLikesTableEAFB06F0Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackEnquiryNestedStackEnquiryNestedStackResource5078A50DOutputstransformerrootstackEnquiryEnquiryDataSourceBFB9B3E1Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackEnquiryNestedStackEnquiryNestedStackResource5078A50DOutputstransformerrootstackEnquiryEnquiryTable59D92D7FRef": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackSavedPostNestedStackSavedPostNestedStackResourceB6DFA658OutputstransformerrootstackSavedPostSavedPostDataSourceC194B457Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackSavedPostNestedStackSavedPostNestedStackResourceB6DFA658OutputstransformerrootstackSavedPostSavedPostTable60F4DC15Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostDataSource6998E105Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackPostNestedStackPostNestedStackResource45FCAC5EOutputstransformerrootstackPostPostTable34CAE87BRef": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryDataSource9AF16D52Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackCategoryNestedStackCategoryNestedStackResourceD9545530OutputstransformerrootstackCategoryCategoryTable44E1EFF7Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserDataSourceA8C4C398Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackUserNestedStackUserNestedStackResource01084C14OutputstransformerrootstackUserUserTableA7A02430Ref": {
+      "Type": "String"
+    }
+  }
+}

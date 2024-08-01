@@ -1,0 +1,13 @@
+{
+  "resourceName": "designer",
+  "policyUUID": "e722ff78",
+  "bucketName": "designer-s3-bucket-517553818975",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

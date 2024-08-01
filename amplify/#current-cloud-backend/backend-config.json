@@ -1,0 +1,114 @@
+{
+  "api": {
+    "designerfrontend": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2025-07-31T06:49:07.619Z",
+              "apiKeyExpirationDays": 365,
+              "description": "designers-appsync-api-key"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "designerfrontendb1a541a0": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [
+          "FACEBOOK",
+          "GOOGLE"
+        ],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "checkUserLikedSavedPosts": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "designersListTrendingPosts": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "designerfrontend"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_checkUserLikedSavedPosts_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "checkUserLikedSavedPosts"
+        }
+      ]
+    },
+    "AMPLIFY_function_checkUserLikedSavedPosts_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "checkUserLikedSavedPosts"
+        }
+      ]
+    },
+    "AMPLIFY_function_designersListTrendingPosts_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "designersListTrendingPosts"
+        }
+      ]
+    },
+    "AMPLIFY_function_designersListTrendingPosts_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "designersListTrendingPosts"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "designer": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
+}

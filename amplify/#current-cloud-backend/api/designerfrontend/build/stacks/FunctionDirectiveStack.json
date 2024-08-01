@@ -1,0 +1,450 @@
+{
+  "Description": "An auto-generated nested stack for the @function directive.",
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Conditions": {
+    "HasEnvironmentParameter": {
+      "Fn::Not": [
+        {
+          "Fn::Equals": [
+            {
+              "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+            },
+            "NONE"
+          ]
+        }
+      ]
+    }
+  },
+  "Resources": {
+    "DesignersListTrendingPostsLambdaDataSourceServiceRole6F524FED": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "appsync.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      }
+    },
+    "DesignersListTrendingPostsLambdaDataSourceServiceRoleDefaultPolicy78A0FEE5": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::If": [
+                    "HasEnvironmentParameter",
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:designersListTrendingPosts-${env}",
+                        {
+                          "env": {
+                            "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:designersListTrendingPosts"
+                    }
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::If": [
+                          "HasEnvironmentParameter",
+                          {
+                            "Fn::Sub": [
+                              "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:designersListTrendingPosts-${env}",
+                              {
+                                "env": {
+                                  "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:designersListTrendingPosts"
+                          }
+                        ]
+                      },
+                      ":*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "DesignersListTrendingPostsLambdaDataSourceServiceRoleDefaultPolicy78A0FEE5",
+        "Roles": [
+          {
+            "Ref": "DesignersListTrendingPostsLambdaDataSourceServiceRole6F524FED"
+          }
+        ]
+      }
+    },
+    "DesignersListTrendingPostsLambdaDataSource": {
+      "Type": "AWS::AppSync::DataSource",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "LambdaConfig": {
+          "LambdaFunctionArn": {
+            "Fn::If": [
+              "HasEnvironmentParameter",
+              {
+                "Fn::Sub": [
+                  "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:designersListTrendingPosts-${env}",
+                  {
+                    "env": {
+                      "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                    }
+                  }
+                ]
+              },
+              {
+                "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:designersListTrendingPosts"
+              }
+            ]
+          }
+        },
+        "Name": "DesignersListTrendingPostsLambdaDataSource",
+        "ServiceRoleArn": {
+          "Fn::GetAtt": [
+            "DesignersListTrendingPostsLambdaDataSourceServiceRole6F524FED",
+            "Arn"
+          ]
+        },
+        "Type": "AWS_LAMBDA"
+      }
+    },
+    "InvokeDesignersListTrendingPostsLambdaDataSourceInvokeDesignersListTrendingPostsLambdaDataSourceAppSyncFunction0341F03F": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "DesignersListTrendingPostsLambdaDataSource",
+            "Name"
+          ]
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "InvokeDesignersListTrendingPostsLambdaDataSource",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/InvokeDesignersListTrendingPostsLambdaDataSource.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/InvokeDesignersListTrendingPostsLambdaDataSource.res.vtl"
+            ]
+          ]
+        }
+      },
+      "DependsOn": [
+        "DesignersListTrendingPostsLambdaDataSource"
+      ]
+    },
+    "QuerylistTrendingPostsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "listTrendingPosts",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "InvokeDesignersListTrendingPostsLambdaDataSourceInvokeDesignersListTrendingPostsLambdaDataSourceAppSyncFunction0341F03F",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": "## [Start] Stash resolver specific context.. **\n$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listTrendingPosts\"))\n{}\n## [End] Stash resolver specific context.. **",
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Query.listTrendingPosts.res.vtl"
+            ]
+          ]
+        },
+        "TypeName": "Query"
+      }
+    },
+    "CheckUserLikedSavedPostsLambdaDataSourceServiceRole6E337747": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "appsync.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      }
+    },
+    "CheckUserLikedSavedPostsLambdaDataSourceServiceRoleDefaultPolicy0CBF756F": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::If": [
+                    "HasEnvironmentParameter",
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:checkUserLikedSavedPosts-${env}",
+                        {
+                          "env": {
+                            "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:checkUserLikedSavedPosts"
+                    }
+                  ]
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::If": [
+                          "HasEnvironmentParameter",
+                          {
+                            "Fn::Sub": [
+                              "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:checkUserLikedSavedPosts-${env}",
+                              {
+                                "env": {
+                                  "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:checkUserLikedSavedPosts"
+                          }
+                        ]
+                      },
+                      ":*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "CheckUserLikedSavedPostsLambdaDataSourceServiceRoleDefaultPolicy0CBF756F",
+        "Roles": [
+          {
+            "Ref": "CheckUserLikedSavedPostsLambdaDataSourceServiceRole6E337747"
+          }
+        ]
+      }
+    },
+    "CheckUserLikedSavedPostsLambdaDataSource": {
+      "Type": "AWS::AppSync::DataSource",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "LambdaConfig": {
+          "LambdaFunctionArn": {
+            "Fn::If": [
+              "HasEnvironmentParameter",
+              {
+                "Fn::Sub": [
+                  "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:checkUserLikedSavedPosts-${env}",
+                  {
+                    "env": {
+                      "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                    }
+                  }
+                ]
+              },
+              {
+                "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:checkUserLikedSavedPosts"
+              }
+            ]
+          }
+        },
+        "Name": "CheckUserLikedSavedPostsLambdaDataSource",
+        "ServiceRoleArn": {
+          "Fn::GetAtt": [
+            "CheckUserLikedSavedPostsLambdaDataSourceServiceRole6E337747",
+            "Arn"
+          ]
+        },
+        "Type": "AWS_LAMBDA"
+      }
+    },
+    "InvokeCheckUserLikedSavedPostsLambdaDataSourceInvokeCheckUserLikedSavedPostsLambdaDataSourceAppSyncFunctionBBAB8C49": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "CheckUserLikedSavedPostsLambdaDataSource",
+            "Name"
+          ]
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "InvokeCheckUserLikedSavedPostsLambdaDataSource",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/InvokeCheckUserLikedSavedPostsLambdaDataSource.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/InvokeCheckUserLikedSavedPostsLambdaDataSource.res.vtl"
+            ]
+          ]
+        }
+      },
+      "DependsOn": [
+        "CheckUserLikedSavedPostsLambdaDataSource"
+      ]
+    },
+    "QuerycheckUserLikedSavedPostsResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "checkUserLikedSavedPosts",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "InvokeCheckUserLikedSavedPostsLambdaDataSourceInvokeCheckUserLikedSavedPostsLambdaDataSourceAppSyncFunctionBBAB8C49",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": "## [Start] Stash resolver specific context.. **\n$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"checkUserLikedSavedPosts\"))\n{}\n## [End] Stash resolver specific context.. **",
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/Query.checkUserLikedSavedPosts.res.vtl"
+            ]
+          ]
+        },
+        "TypeName": "Query"
+      }
+    }
+  },
+  "Parameters": {
+    "referencetotransformerrootstackenv10C5A902Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackGraphQLAPI20497F53ApiId": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackS3DeploymentBucket7592718ARef": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
+      "Type": "String"
+    }
+  }
+}

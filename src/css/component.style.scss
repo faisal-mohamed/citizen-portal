@@ -1,0 +1,213 @@
+@import "./Variable.scss";
+
+.hero-link {
+    transition: all 0.3s ease-in-out !important;
+    border-radius: 50px !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #fff !important;
+    margin: 0 5px;
+    padding: 16px 20px;
+    font-size: 16px;
+
+    &:hover {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+}
+
+.nav-active {
+    background: #fff !important;
+    color: #000 !important;
+}
+
+.action-btn {
+    display: inline-block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 16px;
+    -webkit-transition: color 200ms ease;
+    transition: color 200ms ease;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+
+}
+
+.close {
+    background: "#ced4da" !important;
+    color: "#000";
+
+}
+
+.primary {
+    background: #f76c6c;
+    color: #fff;
+}
+
+button:disabled {
+    opacity: 0.5; //change the opacity of the button when disabled
+    pointer-events: none; //disable pointer events on the button
+}
+
+.thumnail-btn {
+    z-index: 1;
+    box-shadow: inset 0px 0px 0px 100px #eff3f6;
+    display: block;
+    text-align: center;
+    align-items: center;
+    position: initial;
+    min-width: 34px;
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 34px;
+    border-radius: 8px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: $primary;
+
+    &:hover {
+        box-shadow: inset 0px 0px 0px 100px $primary;
+        color: $white;
+
+        .ri-heart-line:before {
+            content: "\ee0e";
+        }
+        .ri-bookmark-line:before {
+            content: "\eae4";
+        }
+    }
+
+    &.active{
+        box-shadow: inset 0px 0px 0px 100px $primary;
+        color: $white; 
+        .ri-heart-line:before {
+            content: "\ee0e";
+        }
+        .ri-bookmark-line:before {
+            content: "\eae4";
+        }
+    }
+}
+
+.logo-img {
+    .logo {
+        width: 80px;
+        // object-fit: cover;
+    }
+}
+
+.img-btn {
+    z-index: 1;
+}
+
+//filter UI
+
+
+.filter-wrapper {
+    width: 25vw;
+    padding: 20px;
+
+    .filter-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 10px;
+
+    }
+
+
+
+    .filter-search {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        justify-content: space-between;
+    }
+}
+
+.img-preview {
+    .close {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        text-align: center;
+        line-height: 18px;
+        z-index: 1;
+        cursor: pointer;
+
+        &:after {
+            content: '\2716';
+            font-size: 14px;
+            color: white;
+        }
+    }
+
+    .line-24 {
+        line-height: 24px;
+    }
+}
+
+//password css
+
+.invalid {
+    color: $danger;
+}
+
+.valid {
+    color: $success;
+
+    &::before {
+        position: relative;
+        left: -8px;
+        content: "✔";
+    }
+}
+
+.enquiry-info {
+    color: $info-primary;
+
+    &::before {
+        position: relative;
+        left: -8px;
+        content: "✔";
+    }
+}
+
+.text-primarycolor {
+    color: $primary !important;
+}
+
+.spinner-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.site-spin{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,70 @@
+@import "../../css/Variable.scss";
+
+
+.project-view {
+    position: absolute;
+    background: #fff;
+    margin: 20px 50px 0px 50px;
+    // height: 100vh;
+    border-radius: 10px 10px 0px 0px;
+    // width: 88vw;
+    // overflow-x: hidden;
+    // &::-webkit-scrollbar{
+    //     display: none;
+    // }
+}
+
+
+
+.sidebar-wrapper {
+    position: fixed;
+
+    .action-btn {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 34px;
+        border-radius: 8px;
+        padding: 0;
+        border: none;
+        box-shadow: inset 0px 0px 0px 100px #eff3f6;
+        color: #0d0c22;
+    }
+
+}
+
+.project-main-wrapper {
+    padding: 0rem 1rem 0rem 1rem;
+
+    .image-container {
+        margin: 0 auto;
+        padding: 10px 50px 0px 50px;
+
+    }
+}
+
+
+
+.like-btn {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid $primary;
+  border-radius: 4px;
+  color: $primary;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color:  $primary;
+    color: #fff;
+  }
+}
+.btn-active {
+    background-color:  $primary;
+    color: #fff;
+    outline: none;
+  }

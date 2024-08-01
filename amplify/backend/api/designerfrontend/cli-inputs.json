@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "designerfrontend",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2025-07-31T06:49:07.619Z",
+      "keyDescription": "designers-appsync-api-key"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
+  }
+}

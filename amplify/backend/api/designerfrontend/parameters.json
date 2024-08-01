@@ -1,0 +1,7 @@
+{
+  "AppSyncApiName": "designerfrontend",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-07-31T06:49:13.336Z",
+  "CreateAPIKey": 1
+}

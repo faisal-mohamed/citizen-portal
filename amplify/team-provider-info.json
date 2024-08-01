@@ -1,0 +1,72 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyf1460b2246e14-staging-161506-authRole",
+      "UnauthRoleArn": "arn:aws:iam::517553818975:role/amplify-amplifyf1460b2246e14-staging-161506-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::517553818975:role/amplify-amplifyf1460b2246e14-staging-161506-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-amplifyf1460b2246e14-staging-161506-deployment",
+      "UnauthRoleName": "amplify-amplifyf1460b2246e14-staging-161506-unauthRole",
+      "StackName": "amplify-amplifyf1460b2246e14-staging-161506",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:517553818975:stack/amplify-amplifyf1460b2246e14-staging-161506/58008250-e384-11ed-96b2-0a7aee2a0c78",
+      "AmplifyAppId": "dqw0ncfsshc"
+    },
+    "categories": {
+      "auth": {
+        "designerfrontendb1a541a0": {}
+      },
+      "storage": {
+        "designer": {}
+      },
+      "api": {
+        "designerfrontend": {}
+      },
+      "function": {
+        "designersListTrendingPosts": {
+          "deploymentBucketName": "amplify-amplifyf1460b2246e14-staging-161506-deployment",
+          "s3Key": "amplify-builds/designersListTrendingPosts-2f744a476f536a6f4f78-build.zip"
+        },
+        "designerfrontend": {},
+        "checkUserLikedSavedPosts": {
+          "deploymentBucketName": "amplify-amplifyf1460b2246e14-staging-161506-deployment",
+          "s3Key": "amplify-builds/checkUserLikedSavedPosts-72475741416f77335330-build.zip"
+        }
+      }
+    }
+  },
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-designerfrontend-prod-155245-authRole",
+      "UnauthRoleArn": "arn:aws:iam::517553818975:role/amplify-designerfrontend-prod-155245-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::517553818975:role/amplify-designerfrontend-prod-155245-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-designerfrontend-prod-155245-deployment",
+      "UnauthRoleName": "amplify-designerfrontend-prod-155245-unauthRole",
+      "StackName": "amplify-designerfrontend-prod-155245",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:517553818975:stack/amplify-designerfrontend-prod-155245/f3e6b370-082c-11ee-a657-06773d4d2614",
+      "AmplifyAppId": "dqw0ncfsshc"
+    },
+    "categories": {
+      "auth": {
+        "designerfrontendb1a541a0": {}
+      },
+      "function": {
+        "designersListTrendingPosts": {
+          "deploymentBucketName": "amplify-designerfrontend-prod-155245-deployment",
+          "s3Key": "amplify-builds/designersListTrendingPosts-62416e4d65516c505362-build.zip"
+        },
+        "designerfrontend": {},
+        "checkUserLikedSavedPosts": {
+          "deploymentBucketName": "amplify-designerfrontend-prod-155245-deployment",
+          "s3Key": "amplify-builds/checkUserLikedSavedPosts-5471534a72527767676c-build.zip"
+        }
+      },
+      "api": {
+        "designerfrontend": {}
+      },
+      "storage": {
+        "designer": {}
+      }
+    }
+  }
+}
