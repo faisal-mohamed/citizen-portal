@@ -68,5 +68,40 @@
         "designer": {}
       }
     }
+  },
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-designerfrontend-dev-51cca-authRole",
+      "UnauthRoleArn": "arn:aws:iam::313719924713:role/amplify-designerfrontend-dev-51cca-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::313719924713:role/amplify-designerfrontend-dev-51cca-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-designerfrontend-dev-51cca-deployment",
+      "UnauthRoleName": "amplify-designerfrontend-dev-51cca-unauthRole",
+      "StackName": "amplify-designerfrontend-dev-51cca",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:313719924713:stack/amplify-designerfrontend-dev-51cca/ead70380-4ffb-11ef-86a7-0292fbba8061",
+      "AmplifyAppId": "d3k1xgsh1mg0j1"
+    },
+    "categories": {
+      "auth": {
+        "designerfrontendb1a541a0": {}
+      },
+      "function": {
+        "checkUserLikedSavedPosts": {
+          "deploymentBucketName": "amplify-designerfrontend-dev-51cca-deployment",
+          "s3Key": "amplify-builds/checkUserLikedSavedPosts-524b4c51613772715336-build.zip"
+        },
+        "designersListTrendingPosts": {
+          "deploymentBucketName": "amplify-designerfrontend-dev-51cca-deployment",
+          "s3Key": "amplify-builds/designersListTrendingPosts-5451784379495a615679-build.zip"
+        },
+        "designerfrontend": {}
+      },
+      "api": {
+        "designerfrontend": {}
+      },
+      "storage": {
+        "designer": {}
+      }
+    }
   }
 }

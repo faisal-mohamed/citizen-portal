@@ -38,7 +38,8 @@ const Index = () => {
 
   return (
     <React.Fragment>
-      {isEmpty(auth.loginUser) && <Home />}
+      {/* {{isEmpty(auth.loginUser) && <Home />}} */}
+      <Home />
       <Discover />
       <button
         onClick={() => toTop()}

@@ -37,6 +37,8 @@ const ImageCard = ({
 
   const dispatch = useDispatch();
 
+  console.log("thumb: ", thumbnailUrl);
+
   const createLike = async () => {
     const payload = {
       likesLikedById: loginUser.id,

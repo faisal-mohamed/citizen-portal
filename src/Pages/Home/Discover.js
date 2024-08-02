@@ -74,7 +74,7 @@ const Discover = () => {
           break;
         }
         default: {
-          const { items } = await Post.listByLikes(
+          const { items } = await Post.listByLikes(               //
             {
               postCategoryId: { eq: filter.categoryId },
             },

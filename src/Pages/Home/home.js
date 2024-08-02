@@ -2,12 +2,17 @@ import React, { memo } from "react";
 import { Container, Row, Col, Input } from "reactstrap";
 import { Link } from "react-router-dom";
 import HeroCategory from "./HeroCategory";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+
+  const user = useSelector((state) => state.auth.loginUser);
+
+  console.log(user);
   return (
     <React.Fragment>
       <section className="section nft-hero" id="hero">
-        {/* <HeroCategory /> */}
+        {/* { <HeroCategory /> } */}
         <video className="bg-video hero-media" autoPlay loop muted>
           <source
             src="https://cdn.dribbble.com/uploads/39417/original/49dbf46eae15d227fc95a69cee31251e.mp4?1657824906"
@@ -19,7 +24,7 @@ const Home = () => {
             <Col lg={8} sm={10}>
               <div className="text-center">
                 <h4 className="display-6 fw-small mb-4 lh-base text-white">
-                Explore the world’s leading interior designs
+                Your Gateway to Government Services
                 </h4>
                 {/* <div className=" d-flex justify-content-center">
                   <span className="mdi mdi-magnify search-widget-icon search-icon"></span>
@@ -35,18 +40,21 @@ const Home = () => {
                   />
                 </div> */}
                 <p className="lead text-white lh-base mt-2 pb-2">
-                Join the network of interior designars around the world to showcase your designs on Designars - where designars thrive
+                Empowering Citizens, Simplifying Services
                 </p>
 
                 <div className="hstack gap-2 justify-content-center">
-                  <Link to="/login" className="btn btn-primary">
-                  Discover Inspiration
-                    <i className="ri-arrow-right-line align-middle ms-1"></i>
-                  </Link>
-                  <Link to="/login" className="btn btn-danger">
-                  Share Your Work
-                    <i className="ri-arrow-right-line align-middle ms-1"></i>
-                  </Link>
+                 {  !user &&  <>
+                    <Link to={"/login"} className="btn btn-primary">
+                    Discover Inspiration
+                      <i className="ri-arrow-right-line align-middle ms-1"></i>
+                    </Link>
+                    <Link to="/login" className="btn btn-danger">
+                    Share Your Work
+                      <i className="ri-arrow-right-line align-middle ms-1"></i>
+                    </Link>
+
+                  </>}
                 </div>
               </div>
             </Col>

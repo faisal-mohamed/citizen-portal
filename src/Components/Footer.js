@@ -16,9 +16,7 @@ const Footer = () => {
                 </div>
                 <div className="mt-4 fs-15">
                   <p>
-                    Discover the ultimate platform for interior designars to
-                    showcase their work, connect with clients, and unleash their
-                    creative potential.
+                   
                   </p>
                   <ul className="list-inline mb-0 footer-social-link">
                     <li className="list-inline-item">
@@ -63,7 +61,7 @@ const Footer = () => {
                             (window.location = "mailto:support@designars.sg")
                           }
                         >
-                          Contact us <span className="text-primary text-decoration-underline"  to="#">support@designars.sg</span>
+                          Contact us <span className="text-primary text-decoration-underline"  to="#">support@mneotech.com</span>
                         </NavLink>
                       </li>
                       {/* <li>

@@ -473,7 +473,7 @@
               {
                 "Ref": "CommentTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -565,7 +565,7 @@
               {
                 "Ref": "CommentTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -660,7 +660,7 @@
               {
                 "Ref": "CommentTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -755,7 +755,7 @@
               {
                 "Ref": "CommentTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -847,7 +847,7 @@
               {
                 "Ref": "CommentTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -881,7 +881,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -915,7 +915,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -949,7 +949,7 @@
               {
                 "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1041,7 +1041,7 @@
               {
                 "Ref": "CommentTable"
               },
-              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:572dff58-0083-4d4d-a321-53ea8bf4f4e8\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"ap-southeast-1_oMzeAekw7_Full-access/CognitoIdentityCredentials\",\"ap-southeast-1_oMzeAekw7_Manage-only/CognitoIdentityCredentials\",\"designersListTrendingPosts-staging\"]))\n$util.toJson({})"
+              "\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"ap-southeast-1:52fb866c-db87-4775-97ef-dbaed6487fe2\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"designersListTrendingPosts-dev\"]))\n$util.toJson({})"
             ]
           ]
         },

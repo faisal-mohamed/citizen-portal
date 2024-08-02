@@ -1,5 +1,5 @@
 {
-  "Description": "Root Stack for AWS Amplify Console",
+  "Description": "Root Stack for AWS Amplify CLI",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "DeploymentBucketName": {
@@ -155,21 +155,21 @@
     "apidesignerfrontend": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifyf1460b2246e14-staging-161506-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-designerfrontend-dev-51cca-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "Parameters": {
           "AppSyncApiName": "designerfrontend",
           "DynamoDBBillingMode": "PAY_PER_REQUEST",
           "DynamoDBEnableServerSideEncryption": false,
-          "S3DeploymentBucket": "amplify-amplifyf1460b2246e14-staging-161506-deployment",
+          "S3DeploymentBucket": "amplify-designerfrontend-dev-51cca-deployment",
           "S3DeploymentRootKey": "amplify-appsync-files/8182fbe1cd9e53480e7febe3b17fbe7335f83073",
-          "env": "staging"
+          "env": "dev"
         }
       }
     },
     "authdesignerfrontendb1a541a0": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifyf1460b2246e14-staging-161506-deployment/amplify-cfn-templates/auth/designerfrontendb1a541a0-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-designerfrontend-dev-51cca-deployment/amplify-cfn-templates/auth/designerfrontendb1a541a0-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "designerfrontendb1a541a0_identitypool_b1a541a0",
           "allowUnauthenticatedIdentities": false,
@@ -221,28 +221,28 @@
           "dependsOn": "",
           "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://main.dqw0ncfsshc.amplifyapp.com/\",\"https://kannan-dev.dqw0ncfsshc.amplifyapp.com/\",\"https://kannan-dev.dqw0ncfsshc.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://main.dqw0ncfsshc.amplifyapp.com/\"]}",
           "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\"},{\"ProviderName\":\"Google\"}]",
-          "env": "staging"
+          "env": "dev"
         }
       }
     },
     "functioncheckUserLikedSavedPosts": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifyf1460b2246e14-staging-161506-deployment/amplify-cfn-templates/function/checkUserLikedSavedPosts-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-designerfrontend-dev-51cca-deployment/amplify-cfn-templates/function/checkUserLikedSavedPosts-cloudformation-template.json",
         "Parameters": {
-          "deploymentBucketName": "amplify-amplifyf1460b2246e14-staging-161506-deployment",
-          "s3Key": "amplify-builds/checkUserLikedSavedPosts-72475741416f77335330-build.zip",
-          "env": "staging"
+          "deploymentBucketName": "amplify-designerfrontend-dev-51cca-deployment",
+          "s3Key": "amplify-builds/checkUserLikedSavedPosts-524b4c51613772715336-build.zip",
+          "env": "dev"
         }
       }
     },
     "functiondesignersListTrendingPosts": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifyf1460b2246e14-staging-161506-deployment/amplify-cfn-templates/function/designersListTrendingPosts-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-designerfrontend-dev-51cca-deployment/amplify-cfn-templates/function/designersListTrendingPosts-cloudformation-template.json",
         "Parameters": {
-          "deploymentBucketName": "amplify-amplifyf1460b2246e14-staging-161506-deployment",
-          "s3Key": "amplify-builds/designersListTrendingPosts-2f744a476f536a6f4f78-build.zip",
+          "deploymentBucketName": "amplify-designerfrontend-dev-51cca-deployment",
+          "s3Key": "amplify-builds/designersListTrendingPosts-5451784379495a615679-build.zip",
           "apidesignerfrontendGraphQLAPIIdOutput": {
             "Fn::GetAtt": [
               "apidesignerfrontend",
@@ -255,14 +255,14 @@
               "Outputs.GraphQLAPIEndpointOutput"
             ]
           },
-          "env": "staging"
+          "env": "dev"
         }
       }
     },
     "storagedesigner": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-amplifyf1460b2246e14-staging-161506-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-designerfrontend-dev-51cca-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "Parameters": {
           "bucketName": "designer-s3-bucket-517553818975",
           "selectedGuestPermissions": "",
@@ -288,7 +288,7 @@
           "s3PermissionsAuthenticatedUploads": "s3:PutObject",
           "s3PermissionsGuestPublic": "DISALLOW",
           "s3PermissionsGuestUploads": "DISALLOW",
-          "env": "staging"
+          "env": "dev"
         }
       }
     },

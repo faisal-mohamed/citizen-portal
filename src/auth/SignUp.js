@@ -158,6 +158,7 @@ const SignUp = () => {
           role,
         },
       } = await User.Create(payload);
+
       dispatch(setUserFirstLogin(true));
       dispatch(
         setAuthData(loginUser, {
@@ -299,7 +300,7 @@ const SignUp = () => {
                                 />
                               )}
 
-                              {/* {<div className="form-check form-check-outline form-check-primary mb-4 mt-4">
+                             {/* {<div className="form-check form-check-outline form-check-primary mb-4 mt-4">
                                 <Input
                                   className="form-check-input"
                                   type="checkbox"
